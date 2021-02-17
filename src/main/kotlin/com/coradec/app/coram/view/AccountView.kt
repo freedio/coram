@@ -13,6 +13,6 @@ class AccountView : VerticalLayout(), HasDynamicTitle {
     override fun getPageTitle(): String = name.content(UI.getCurrent().locale)
 
     companion object {
-        val name: ConText = LocalText("PageName")
+        val name = LocalText("PageName")
     }
 }

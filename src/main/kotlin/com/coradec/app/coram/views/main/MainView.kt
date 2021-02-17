@@ -20,6 +20,7 @@ import com.coradec.app.coram.views.helloworld.HelloWorldView
 import com.coradec.app.coram.views.about.AboutView
 import com.vaadin.flow.component.Component
 import com.vaadin.flow.component.ComponentUtil
+import com.vaadin.flow.component.UI
 import com.vaadin.flow.component.html.Image
 import com.vaadin.flow.component.html.Paragraph
 import com.vaadin.flow.component.tabs.Tab
@@ -83,7 +84,7 @@ class MainView : AppLayout() {
 
     private fun createMenuItems(): Array<out Component> {
         return arrayOf(
-            createTab(AccountView.name.content, AccountView::class.java),
+            createTab(AccountView.name.content(UI.getCurrent().locale), AccountView::class.java),
             createTab("Hello World", HelloWorldView::class.java),
             createTab("About", AboutView::class.java)
         )
