@@ -1,6 +1,6 @@
 package com.coradec.app.coram.views.about
 
-import com.coradec.app.coram.views.main.MainView
+import com.coradec.app.coram.view.MainView
 import com.vaadin.flow.component.Text
 import com.vaadin.flow.component.html.Div
 import com.vaadin.flow.router.PageTitle

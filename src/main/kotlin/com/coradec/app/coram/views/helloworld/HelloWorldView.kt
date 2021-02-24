@@ -1,13 +1,12 @@
 package com.coradec.app.coram.views.helloworld
 
-import com.coradec.app.coram.views.main.MainView
+import com.coradec.app.coram.view.MainView
 import com.vaadin.flow.component.ClickEvent
 import com.vaadin.flow.router.PageTitle
 import com.vaadin.flow.component.dependency.CssImport
 import com.vaadin.flow.router.RouteAlias
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout
 import com.vaadin.flow.component.orderedlayout.FlexComponent
-import com.vaadin.flow.component.ComponentEventListener
 import com.vaadin.flow.component.button.Button
 import com.vaadin.flow.component.notification.Notification
 import com.vaadin.flow.component.textfield.TextField

@@ -1,9 +1,7 @@
-package com.coradec.app.coram.views.main
+package com.coradec.app.coram.view
 
 import com.coradec.coradeck.conf.model.LocalProperty
 import com.coradec.coradeck.conf.model.Property
-import com.coradec.coradeck.conf.model.impl.ContextProperty
-import com.coradec.app.coram.view.AccountView
 import com.vaadin.flow.component.dependency.CssImport
 import com.vaadin.flow.server.PWA
 import com.vaadin.flow.component.dependency.JsModule
@@ -18,13 +16,12 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout
 import com.vaadin.flow.component.tabs.TabsVariant
 import com.coradec.app.coram.views.helloworld.HelloWorldView
 import com.coradec.app.coram.views.about.AboutView
+import com.coradec.coradeck.text.model.LocalText
 import com.vaadin.flow.component.Component
 import com.vaadin.flow.component.ComponentUtil
-import com.vaadin.flow.component.UI
 import com.vaadin.flow.component.html.Image
 import com.vaadin.flow.component.html.Paragraph
 import com.vaadin.flow.component.tabs.Tab
-import com.vaadin.flow.router.PageTitle
 import com.vaadin.flow.router.RouterLink
 import java.util.*
 
@@ -84,7 +81,7 @@ class MainView : AppLayout() {
 
     private fun createMenuItems(): Array<out Component> {
         return arrayOf(
-            createTab(AccountView.name.content(UI.getCurrent().locale), AccountView::class.java),
+            createTab(AccountView.name.content(Locale.getDefault()), AccountView::class.java),
             createTab("Hello World", HelloWorldView::class.java),
             createTab("About", AboutView::class.java)
         )
@@ -93,8 +90,8 @@ class MainView : AppLayout() {
     override fun afterNavigation() {
         super.afterNavigation()
         getTabForComponent(content).ifPresent { selectedTab: Tab? -> menu.selectedTab = selectedTab }
-        val pageTitle = ContextProperty(content.javaClass.name, "PageTitle", "?page title: missing configuration property?")
-        viewTitle!!.text = pageTitle.value
+        val pageTitle = LocalText(content.javaClass.name, "PageTitle")
+        viewTitle!!.text = pageTitle.content(Locale.getDefault())
     }
 
     private fun getTabForComponent(component: Component): Optional<Tab> {
@@ -112,6 +109,7 @@ class MainView : AppLayout() {
     }
 
     init {
+        Locale.setDefault(Locale("de", "CH"))
         primarySection = Section.DRAWER
         addToNavbar(true, createHeaderContent())
         menu = createMenu()

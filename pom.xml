@@ -267,14 +267,25 @@
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-test</artifactId>
+            <artifactId>kotlin-test-junit</artifactId>
             <version>${kotlin.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.rapidpm.vaadin</groupId>
-            <artifactId>i18n-page-title-for-flow-impl</artifactId>
-            <version>00.08.00-RPM</version>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.19.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>2.5.0</version>
         </dependency>
     </dependencies>
 
@@ -408,10 +419,11 @@
                         </executions>
                     </plugin>
 
-                    <!-- Runs the integration tests (*IT) after the server is started -->
+                    <!-- Runs the integration tests (*IT) after the server is started
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-failsafe-plugin</artifactId>
+                        <version>3.0.0-M5</version>
                         <executions>
                             <execution>
                                 <goals>
@@ -425,6 +437,7 @@
                             <enableAssertions>true</enableAssertions>
                         </configuration>
                     </plugin>
+                     the plugin seems to no longer exist -->
                 </plugins>
             </build>
         </profile>
