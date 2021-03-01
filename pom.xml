@@ -127,6 +127,11 @@
                 <artifactId>type-basic</artifactId>
                 <version>${coradeck.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.coradec.coradeck</groupId>
+                <artifactId>db</artifactId>
+                <version>${coradeck.version}</version>
+            </dependency>
 
             <!-- Vaadin -->
             <dependency>
@@ -180,6 +185,10 @@
         <dependency>
             <groupId>com.coradec.coradeck</groupId>
             <artifactId>type-basic</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.coradec.coradeck</groupId>
+            <artifactId>db</artifactId>
         </dependency>
 
         <!-- Vaadin -->
