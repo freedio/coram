@@ -10,7 +10,7 @@
     <properties>
         <java.version>11</java.version>
         <vaadin.version>14.4.6</vaadin.version>
-        <kotlin.version>1.4.30-RC</kotlin.version>
+        <kotlin.version>1.4.31</kotlin.version>
         <coradeck.version>0.2</coradeck.version>
     </properties>
 
@@ -145,6 +145,7 @@
     </dependencyManagement>
 
     <dependencies>
+
         <!-- Coradeck -->
         <dependency>
             <groupId>com.coradec.coradeck</groupId>
@@ -295,6 +296,18 @@
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
             <version>2.5.0</version>
+        </dependency>
+
+        <!-- Other stuff -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>5.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>5.0.0</version>
         </dependency>
     </dependencies>
 

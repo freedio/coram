@@ -39,16 +39,10 @@ class AccountView : VerticalLayout(), HasDynamicTitle {
     }
 
     private fun importClickListener(clickEvent: ClickEvent<Button>) {
-        TODO("Not yet implemented")
+
     }
 
     private fun configureAccountTable() {
-//        accountTable.addColumn(Account::id)
-//            .setHeader("ID")
-//            .setSortProperty("id");
-//        accountTable.addColumn(Account::name)
-//            .setHeader("Name")
-//            .setSortProperty("name");
         accountTable.addClassName("account-table")
         accountTable.setSizeFull()
         accountTable.setColumns("id", "name")
