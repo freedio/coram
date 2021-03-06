@@ -37,7 +37,7 @@ open class Records<T: Any>(klass: KClass<out T>) : AbstractBackEndDataProvider<T
     class QuerySelection<T1, F>(query: Query<T1, F>) : Selection {
         override val order: String = query.sortOrders.let { if (it.isEmpty()) "" else it.joinToString(" ", " order by ") { "${it.sorted.toSqlObjectName()} ${it.direction.sql}" } }
         override val slice: String =
-            "${query.offset.let { if (it == 0) "" else "offset $it" }} ${query.limit.let { if (it == 2147483647) "" else "limit $it" }}"
+            "${query.offset.let { if (it == 0) "" else " offset $it" }} ${query.limit.let { if (it == 2147483647) "" else " limit $it" }}"
         override val where: String = ""
 
         private val SortDirection.sql: String get() = when (this) {

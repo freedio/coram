@@ -7,8 +7,8 @@ interface Account {
     val id: Int
     val name: @Size(128) String
     val currency: @Size(value = 4) String
-    val vatCode: @Size(8) String
-    val group: Int
+    val vatCode: @Size(8) String?
+    val agroup: Int
 
     companion object {
         operator fun invoke(

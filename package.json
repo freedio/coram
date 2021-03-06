@@ -61,7 +61,7 @@
       "webpack-merge": "4.2.2",
       "webpack-dev-server": "3.11.0"
     },
-    "hash": "9890e5125aa064cac87a34d4721a31d4fae3293617bd92cb1ee7dd1fc134ce87"
+    "hash": "25f58b5245a30190f07840aeeec02b7c106898301382e71895d982afbbb6731f"
   },
   "dependencies": {
     "@polymer/iron-icon": "3.0.1",
@@ -108,8 +108,7 @@
     "@vaadin/vaadin-time-picker": "2.4.0",
     "@vaadin/vaadin-upload": "4.4.1",
     "@webcomponents/webcomponentsjs": "^2.2.10",
-    "lit-element": "^2.2.1",
-    "open": "^7.2.1"
+    "lit-element": "^2.2.1"
   },
   "devDependencies": {
     "chokidar": "^3.4.0",
