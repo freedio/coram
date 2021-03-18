@@ -1,28 +1,28 @@
 package com.coradec.app.coram.view
 
+import com.coradec.app.coram.views.about.AboutView
+import com.coradec.app.coram.views.helloworld.HelloWorldView
 import com.coradec.coradeck.conf.model.LocalProperty
 import com.coradec.coradeck.conf.model.Property
-import com.vaadin.flow.component.dependency.CssImport
-import com.vaadin.flow.server.PWA
-import com.vaadin.flow.component.dependency.JsModule
-import com.vaadin.flow.component.applayout.AppLayout
-import com.vaadin.flow.component.tabs.Tabs
-import com.vaadin.flow.component.html.H1
-import com.vaadin.flow.component.orderedlayout.HorizontalLayout
-import com.vaadin.flow.component.orderedlayout.FlexComponent
-import com.vaadin.flow.component.applayout.DrawerToggle
-import com.vaadin.flow.component.avatar.Avatar
-import com.vaadin.flow.component.orderedlayout.VerticalLayout
-import com.vaadin.flow.component.tabs.TabsVariant
-import com.coradec.app.coram.views.helloworld.HelloWorldView
-import com.coradec.app.coram.views.about.AboutView
-import com.coradec.coradeck.text.model.LocalText
 import com.vaadin.flow.component.Component
 import com.vaadin.flow.component.ComponentUtil
+import com.vaadin.flow.component.applayout.AppLayout
+import com.vaadin.flow.component.applayout.DrawerToggle
+import com.vaadin.flow.component.avatar.Avatar
+import com.vaadin.flow.component.dependency.CssImport
+import com.vaadin.flow.component.dependency.JsModule
+import com.vaadin.flow.component.html.H1
 import com.vaadin.flow.component.html.Image
 import com.vaadin.flow.component.html.Paragraph
+import com.vaadin.flow.component.orderedlayout.FlexComponent
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout
+import com.vaadin.flow.component.orderedlayout.VerticalLayout
 import com.vaadin.flow.component.tabs.Tab
+import com.vaadin.flow.component.tabs.Tabs
+import com.vaadin.flow.component.tabs.TabsVariant
+import com.vaadin.flow.router.HasDynamicTitle
 import com.vaadin.flow.router.RouterLink
+import com.vaadin.flow.server.PWA
 import java.util.*
 
 /**
@@ -81,22 +81,26 @@ class MainView : AppLayout() {
 
     private fun createMenuItems(): Array<out Component> {
         return arrayOf(
-            createTab(AccountView.name.content(Locale.getDefault()), AccountView::class.java),
-            createTab("Hello World", HelloWorldView::class.java),
-            createTab("About", AboutView::class.java)
+                createTab(AccountListView.pageName, AccountListView::class.java),
+                createTab(InvoiceListView.pageName, InvoiceListView::class.java),
+                createTab("Hello World", HelloWorldView::class.java),
+                createTab("About", AboutView::class.java)
         )
     }
 
     override fun afterNavigation() {
         super.afterNavigation()
+        val conts = content
         getTabForComponent(content).ifPresent { selectedTab: Tab? -> menu.selectedTab = selectedTab }
-        val pageTitle = LocalText(content.javaClass.name, "PageTitle")
-        viewTitle!!.text = pageTitle.content(Locale.getDefault())
+        viewTitle!!.text = when (conts) {
+            is HasDynamicTitle -> conts.pageTitle
+            else -> "<PageTitle>"
+        }
     }
 
     private fun getTabForComponent(component: Component): Optional<Tab> {
         return menu.children.filter { tab: Component? -> ComponentUtil.getData(tab, Class::class.java) == component.javaClass }
-            .findFirst().map { obj: Component? -> Tab::class.java.cast(obj) }
+                .findFirst().map { obj: Component? -> Tab::class.java.cast(obj) }
     }
 
     companion object {
@@ -109,7 +113,6 @@ class MainView : AppLayout() {
     }
 
     init {
-        Locale.setDefault(Locale("de", "CH"))
         primarySection = Section.DRAWER
         addToNavbar(true, createHeaderContent())
         menu = createMenu()

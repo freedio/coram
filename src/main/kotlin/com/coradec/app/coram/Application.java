@@ -10,6 +10,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.vaadin.artur.helpers.LaunchUtil;
 
+import java.util.Locale;
+
 /**
  * The entry point of the Spring Boot application.
  */
@@ -23,6 +25,7 @@ public class Application extends SpringBootServletInitializer {
                 new CoraTextImpl(),
                 new CoraTypeImpl()
         );
+        Locale.setDefault(new Locale("de", "CH"));
         LaunchUtil.launchBrowserInDevelopmentMode(SpringApplication.run(Application.class, args));
     }
 
